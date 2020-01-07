@@ -59,7 +59,14 @@ class Timer extends React.Component {
     }
 
     resetTimer() {
-
+        clearInterval(this.timer)
+        let timeLeftVar = this.secondsToTime(this.props.time * 60);
+        this.setState({
+            time: timeLeftVar, 
+            seconds: this.props.time*60,
+            pause: true
+        })
+        this.timer = setInterval(this.countDown, 1000);
     }
 
 
