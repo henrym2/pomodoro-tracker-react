@@ -11,12 +11,14 @@ class Timer extends React.Component {
         this.state = {
             time: {}, 
             seconds: props.time*60,
-            pause: true
+            pause: true,
+            alarm: new Audio("http://www.accesscontrolsales.com/Ingram_Products/mp3/pb525dch-x.mp3")
         }
         this.timer = 0
         this.startTimer = this.startTimer.bind(this)
         this.countDown = this.countDown.bind(this)
         this.resetTimer = this.resetTimer.bind(this)
+        this.alarm = this.alarm.bind(this)
     }
 
     secondsToTime(secs) {
@@ -53,9 +55,17 @@ class Timer extends React.Component {
 
             // Check if we're at zero.
             if (seconds === 0) {
-                clearInterval(this.timer);
+                this.resetTimer()
+                this.alarm()
             }
         }
+    }
+
+    alarm() {
+        this.props.callBack(this.props.type)
+        this.state.alarm.addEventListener("canplaythrough", _event => {
+            this.state.alarm.play()
+        })
     }
 
     resetTimer() {
@@ -78,13 +88,17 @@ class Timer extends React.Component {
                         {this.state.time.m}m {this.state.time.s}s
                     </div>
                     <div id="controlRow" className="Control-Row">
-                        <Fab onClick={this.startTimer} color="primary" aria-label="start" className="Control-Item" >
-                            {this.state.pause && <PlayArrowIcon/>}
-                            {!this.state.pause && <PauseCircleFilledIcon/>}
-                        </Fab>
-                        <Fab onClick={this.resetTimer} color="secondary" aria-label="reset" className="Control-Item">
-                            <HighlightOffIcon/>
-                        </Fab>
+                        <div className="Control-Item">
+                            <Fab onClick={this.startTimer} color="primary" aria-label="start"  >
+                                {this.state.pause && <PlayArrowIcon/>}
+                                {!this.state.pause && <PauseCircleFilledIcon/>}
+                            </Fab>
+                        </div>
+                        <div className="Control">
+                            <Fab onClick={this.resetTimer} color="secondary" aria-label="reset" >
+                                <HighlightOffIcon/>
+                            </Fab>
+                        </div>
                     </div>  
                 </Paper>
             </div>
