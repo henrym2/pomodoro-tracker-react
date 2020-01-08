@@ -10,13 +10,15 @@ const TIMER_TYPES = {
 }
 
 class App extends React.Component {
+  
   constructor() {
     super()
     this.state = {
-      workCount:       0,
-      shortBreakCount: 0,
-      longBreakCount:  0
+      work:  0,
+      short: 0,
+      long:  0
     }
+    this.timerTriggered = this.timerTriggered.bind(this)
   }
 
   render() {
@@ -24,9 +26,18 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <div className="Timer-Row">
-          <Timer time={25} callBack={this.timerTriggered} type={TIMER_TYPES.JOB}></Timer>
-          <Timer time={10} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
-          <Timer time={5} callBack={this.timerTriggered} type={TIMER_TYPES.LONG}></Timer>
+            <div className="details-row">
+              <p>{this.state.work}</p>
+              <Timer time={25} callBack={this.timerTriggered} type={TIMER_TYPES.JOB}></Timer>
+            </div>
+            <div className="details-row">
+              <p>{this.state.long}</p>
+              <Timer time={10} callBack={this.timerTriggered} type={TIMER_TYPES.LONG}></Timer>
+            </div>
+            <div className="details-row">
+              <p>{this.state.short}</p>
+              <Timer time={5} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
+            </div>
           </div>
         </div>
       </div>
@@ -34,16 +45,21 @@ class App extends React.Component {
   }
 
   timerTriggered = (timer) => {
-    let { workCount, shortBreakCount, longBreakCount } = this.state
     switch (timer) {
       case TIMER_TYPES.JOB:
-        this.setState({workCount: workCount++})
+        this.setState((prevState, _props) => {
+          return {work: prevState.work+1}
+        })
         break;
       case TIMER_TYPES.SHORT:
-        this.setState({shortBreakCount: shortBreakCount++})
+        this.setState((prevState, _props) => {
+          return {short: prevState.short+1}
+        })
         break
       case TIMER_TYPES.LONG:
-        this.setState({longBreakCount: longBreakCount++})
+        this.setState((prevState, _props) => {
+          return {long: prevState.long+1}
+        })
         break
       default:
         break;

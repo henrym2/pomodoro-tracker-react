@@ -54,7 +54,7 @@ class Timer extends React.Component {
             });
 
             // Check if we're at zero.
-            if (seconds === 0) {
+            if (seconds < 0) {
                 this.resetTimer()
                 this.alarm()
             }
