@@ -9,8 +9,8 @@
 
 .counter {
         display: flex;
-        text-align: center;
-        align-self: center;
+        text-align: left;
+        align-self: left;
         justify-self: center;
 }
 

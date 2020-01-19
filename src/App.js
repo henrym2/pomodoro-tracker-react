@@ -36,7 +36,7 @@ class App extends React.Component {
             </div>
             <div className="details-row bounce-in-top" style={{"--length": "1.3s"}}>
               <p className="counter">{this.state.short}</p>
-              <Timer time={5} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
+              <Timer time={0.1} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
             </div>
           </div>
         </div>
@@ -75,6 +75,10 @@ class App extends React.Component {
       Notification.requestPermission().then(function(result) {
         console.log(result);
       });
+    }
+    if(this.state.work > 3){
+      alert("Long break time!")
+      this.setState({work: 0})
     }
     
   }
