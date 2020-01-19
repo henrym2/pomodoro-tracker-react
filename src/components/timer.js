@@ -5,6 +5,17 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import '../styles/timer.css'
 
+/*Props --
+    Int  time     -- Length of the timer
+    Func callBack -- Callback function for passing up timer changes
+    Int  type     -- Timer type 
+                            => Job:   0
+                            => Short: 1
+                            => Long:  2
+
+*/
+
+
 class Timer extends React.Component {
     constructor(props) {
         super()
@@ -63,6 +74,7 @@ class Timer extends React.Component {
 
     alarm() {
         this.props.callBack(this.props.type)
+        alert(`${"Work" ? this.props.type > 0: "Break"} over!`)
         this.state.alarm.addEventListener("canplaythrough", _event => {
             this.state.alarm.play()
         })
@@ -83,7 +95,7 @@ class Timer extends React.Component {
     render() {
         return (
             <div style={{marginRight: "5vw"}} >
-                <Paper elevation={3} style={ {width : "15vw",height: "17vw" }} className="Timer-Container bounce-in-top">
+                <Paper elevation={3} style={ {width : "15vw",height: "17vw" }} className="Timer-Container">
                     <div>
                         {this.state.time.m}m {this.state.time.s}s
                     </div>

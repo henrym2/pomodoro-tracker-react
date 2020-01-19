@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+.counter {
+        display: flex;
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -14,8 +21,8 @@
 }
 
 .bounce-in-top {
-	-webkit-animation: bounce-in-top 1.1s both;
-	        animation: bounce-in-top 1.1s both;
+	-webkit-animation: bounce-in-top var(--length) both;
+	        animation: bounce-in-top var(--length) both;
 }
 
 .details-row{

@@ -26,16 +26,16 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <div className="Timer-Row">
-            <div className="details-row">
-              <p>{this.state.work}</p>
+            <div className="details-row bounce-in-top" style={{"--length": "1.1s"}}>
+              <p className="counter">{this.state.work}</p>
               <Timer time={25} callBack={this.timerTriggered} type={TIMER_TYPES.JOB}></Timer>
             </div>
-            <div className="details-row">
-              <p>{this.state.long}</p>
+            <div className="details-row bounce-in-top" style={{"--length": "1.2s"}}>
+              <p className="counter">{this.state.long}</p>
               <Timer time={10} callBack={this.timerTriggered} type={TIMER_TYPES.LONG}></Timer>
             </div>
-            <div className="details-row">
-              <p>{this.state.short}</p>
+            <div className="details-row bounce-in-top" style={{"--length": "1.3s"}}>
+              <p className="counter">{this.state.short}</p>
               <Timer time={5} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
             </div>
           </div>
