@@ -96,7 +96,7 @@ class Timer extends React.Component {
         return (
             <div style={{marginRight: "5vw"}} >
                 <Paper elevation={3} style={ {width : "15vw",height: "17vw" }} className="Timer-Container">
-                    <div>
+                    <div className="timer-ticker">
                         {this.state.time.m}m {this.state.time.s}s
                     </div>
                     <div id="controlRow" className="Control-Row">
