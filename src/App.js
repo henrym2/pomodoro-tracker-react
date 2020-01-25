@@ -1,6 +1,8 @@
 import React from 'react';
 // import logo from './hourglass.svg';
 import Timer from './components/timer'
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar'
 import './styles/App.css';
 
 const TIMER_TYPES = {
@@ -24,19 +26,25 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <AppBar position="static">
+          <Toolbar>
+            <div style={{marginLeft: "auto"}}>
+              <Timer time={25} callBack={this.timerTriggered} type={TIMER_TYPES.JOB}></Timer>
+            </div>
+            <Timer time={10} callBack={this.timerTriggered} type={TIMER_TYPES.LONG}></Timer>
+            <Timer time={5} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
+          </Toolbar>
+        </AppBar>
         <div className="App-header">
           <div className="Timer-Row">
             <div className="details-row bounce-in-top" style={{"--length": "1.1s"}}>
-              <p className="counter">{this.state.work}</p>
-              <Timer time={25} callBack={this.timerTriggered} type={TIMER_TYPES.JOB}></Timer>
+              <p style={{color: "black"}} className="counter">{this.state.work}</p>
             </div>
             <div className="details-row bounce-in-top" style={{"--length": "1.2s"}}>
               <p className="counter">{this.state.long}</p>
-              <Timer time={10} callBack={this.timerTriggered} type={TIMER_TYPES.LONG}></Timer>
             </div>
             <div className="details-row bounce-in-top" style={{"--length": "1.3s"}}>
               <p className="counter">{this.state.short}</p>
-              <Timer time={5} callBack={this.timerTriggered} type={TIMER_TYPES.SHORT}></Timer>
             </div>
           </div>
         </div>
