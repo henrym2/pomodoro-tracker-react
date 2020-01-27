@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Fab } from '@material-ui/core'
+import { Fab } from '@material-ui/core'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';

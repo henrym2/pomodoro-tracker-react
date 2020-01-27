@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './hourglass.svg';
 import Timer from './components/timer'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
