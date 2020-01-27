@@ -9,10 +9,9 @@ import '../styles/timer.css'
     Int  time     -- Length of the timer
     Func callBack -- Callback function for passing up timer changes
     Int  type     -- Timer type 
-                            => Job:   0
-                            => Short: 1
-                            => Long:  2
-
+                     => Job:   0
+                     => Short: 1
+                     => Long:  2
 */
 
 
