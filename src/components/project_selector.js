@@ -23,7 +23,7 @@ class ProjectSelector extends React.Component {
 
     onChange = (event) => {
         this.setState({currentProject: event.target.value})
-        this.props.callBack(this.state.currentProject)
+        this.props.callBack(event.target.value)
     }
 
     render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import Timer from './components/timer'
 import StopWatch from './components/stopwatch'
 import ProjectSelector from './components/project_selector'
-import { Select, AppBar, Toolbar, MenuItem } from '@material-ui/core';
+import { AppBar, Toolbar} from '@material-ui/core';
 import './styles/App.css';
 
 const TIMER_TYPES = {
@@ -20,12 +20,11 @@ class App extends React.Component {
       short: 0,
       long:  0,
       stopWatchElapsed: 0,
-      timerType: {
-        length: 25,
-        type: TIMER_TYPES.JOB
-      }
+      project: {},
     }
     this.timerTriggered = this.timerTriggered.bind(this)
+    this.projectSelect_Callback = this.projectSelect_Callback.bind(this)
+    this.stopwatch_Callback = this.stopwatch_Callback.bind(this)
   }
 
   render() {
@@ -49,8 +48,8 @@ class App extends React.Component {
     );
   }
 
-  projectSelect_Callback = (project) => {
-    console.log(project)
+  projectSelect_Callback = (proj) => {
+    this.setState({project: proj})
   }
 
   stopwatch_Callback = (elapsed) => {
