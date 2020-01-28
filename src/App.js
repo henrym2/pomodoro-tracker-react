@@ -18,6 +18,7 @@ class App extends React.Component {
       work:  0,
       short: 0,
       long:  0,
+      stopWatchElapsed: 0,
       timerType: {
         length: 25,
         type: TIMER_TYPES.JOB
@@ -32,8 +33,8 @@ class App extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <div style={{marginLeft: "auto"}}>
-              <Timer callBack={this.timerTriggered} type={this.state.timerType.type}></Timer>
-              <StopWatch></StopWatch>
+              {/* <Timer callBack={this.timerTriggered} type={this.state.timerType.type}></Timer> */}
+              <StopWatch callBack={this.stopwatch_Callback}></StopWatch>
             </div>
           </Toolbar>
         </AppBar>
@@ -52,6 +53,10 @@ class App extends React.Component {
         </div>
       </div>
     );
+  }
+
+  stopwatch_Callback = (elapsed) => {
+    this.setState({stopWatchElapsed: elapsed})
   }
 
   timerTriggered = (timer) => {

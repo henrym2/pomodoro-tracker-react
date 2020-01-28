@@ -6,6 +6,10 @@ import PauseCircleFilledIcon from '@material-ui/icons/PauseCircleFilled';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 // import "./App.css";
 
+/*
+    Props -> Value callback
+*/
+
 import '../styles/timer.css'
 class Stopwatch extends React.Component {
 
@@ -16,6 +20,15 @@ class Stopwatch extends React.Component {
             timerStart: 0,
             timerTime: 0
         };
+        this.stopTimer = this.stopTimer.bind(this)
+    }
+
+    controlStopwatch = () => {
+        if(this.state.timerOn){
+            this.stopTimer()
+        }else{
+            this.startTimer()
+        }
     }
 
     startTimer = () => {
@@ -35,6 +48,7 @@ class Stopwatch extends React.Component {
         this.setState({
             timerOn: false
         });
+        this.props.callBack(this.state.timerTime)
         clearInterval(this.timer);
     };
 
@@ -59,7 +73,7 @@ class Stopwatch extends React.Component {
             </div>
             <div id="controlRow" className="Control-Row">
                 <div className="Control-Item">
-                    <Fab onClick={this.startTimer} color="primary" aria-label="start"  >
+                    <Fab onClick={this.controlStopwatch} color="primary" aria-label="start"  >
                         {this.state.pause && <PlayArrowIcon/>}
                         {!this.state.pause && <PauseCircleFilledIcon/>}
                     </Fab>
