@@ -28,11 +28,18 @@
 	        animation: bounce-in-top var(--length) both;
 }
 
-.details-row{
+.details-row {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+}
+
+.Dashboard {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: left;
 }
 
 

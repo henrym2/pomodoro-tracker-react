@@ -1,6 +1,7 @@
 import React from 'react';
 import Timer from './components/timer'
 import StopWatch from './components/stopwatch'
+import ProjectSelector from './components/project_selector'
 import { Select, AppBar, Toolbar, MenuItem } from '@material-ui/core';
 import './styles/App.css';
 
@@ -32,6 +33,7 @@ class App extends React.Component {
       <div className="App">
         <AppBar position="static">
           <Toolbar>
+          <ProjectSelector callBack={this.projectSelect_Callback}></ProjectSelector>
             <div style={{marginLeft: "auto"}}>
               {/* <Timer callBack={this.timerTriggered} type={this.state.timerType.type}></Timer> */}
               <StopWatch callBack={this.stopwatch_Callback}></StopWatch>
@@ -39,20 +41,16 @@ class App extends React.Component {
           </Toolbar>
         </AppBar>
         <div className="App-header">
-          <div className="Timer-Row">
-            <div className="details-row bounce-in-top" style={{"--length": "1.1s"}}>
-              <p className="counter">{this.state.work}</p>
-            </div>
-            <div className="details-row bounce-in-top" style={{"--length": "1.2s"}}>
-              <p className="counter">{this.state.long}</p>
-            </div>
-            <div className="details-row bounce-in-top" style={{"--length": "1.3s"}}>
-              <p className="counter">{this.state.short}</p>
-            </div>
+          <div className="Dashboard">
+  
           </div>
         </div>
       </div>
     );
+  }
+
+  projectSelect_Callback = (project) => {
+    console.log(project)
   }
 
   stopwatch_Callback = (elapsed) => {
