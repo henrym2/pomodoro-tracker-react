@@ -74,8 +74,8 @@ class Stopwatch extends React.Component {
             <div id="controlRow" className="Control-Row">
                 <div className="Control-Item">
                     <Fab onClick={this.controlStopwatch} color="primary" aria-label="start"  >
-                        {this.state.pause && <PlayArrowIcon/>}
-                        {!this.state.pause && <PauseCircleFilledIcon/>}
+                        {!this.state.timerOn && <PlayArrowIcon/>}
+                        {this.state.timerOn && <PauseCircleFilledIcon/>}
                     </Fab>
                 </div>
                 <div className="Control">
